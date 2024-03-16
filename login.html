@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register page</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<script>
+    function changeToRegister() {
+
+    const changeToRegisterBtn = document.querySelector('#changeToRegister');
+    const changeToLogin = document.querySelector('#changeToLogin');
+    const loginForm = document.querySelector('#loginForm');
+    const registerForm = document.querySelector('#registerForm');
+    changeToRegisterBtn.addEventListener('click', () => {
+        loginForm.classList.remove('active')
+        registerForm.classList.add('active')
+    });
+}
+changeToRegister();
+
+
+function changeToLogin() {
+    const changeToLoginBtn = document.querySelector('#chnageToLogin');
+    const loginForm = document.querySelector('#loginForm');
+    const registerForm = document.querySelector('#registerForm');
+    changeToLoginBtn.addEventListener('click', () => {
+        loginForm.classList.add('active')
+        registerForm.classList.remove('active')
+    })
+}
+changeToLogin();
+
+
+function activeInput(event) {
+    if (screen.width > 600) {
+        let input = event;
+        input.style.border = '1px solid #4054D2';
+    }
+}
+activeInput()
+
+</script>
+
+<style>
+    * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #B0B6D0;
+}
+
+.container {
+
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center; 
+    background-color: #FBFBFC;
+    height: 900px;
+
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    height: auto;
+    border-right: 10px solid white;
+    gap: 10px;
+    margin-bottom: 100px;
+    
+}
+
+h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 50px;
+    font-size: 30px;
+    font-weight: 100;
+    text-decoration: underline solid #0B1CD5;
+    padding: 10px;
+}
+
+.img {
+    width: 95%;
+    height: 500px;
+    
+    margin-left: 50px;
+}
+
+.form {
+    display: none;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.form.active {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+    flex-direction: column;
+    gap: 10px;
+    animation: show 1s;
+}
+
+input {
+    padding: 10px;
+    outline: none;
+    border: 1px solid #5E5763;
+    border-radius: 5px;
+    background-color: #FBFBFC;
+}
+
+.password,
+.email {
+    border: none;
+    padding: 20px;
+    width: 60%;
+}
+
+.email {
+    width: 100%;
+}
+
+.pass-reset {
+    border: 1px solid #B0B6D0;
+    padding: 0 5px;
+    border-radius: 10px;
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
+    justify-items: baseline;
+    align-items: baseline;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.reset-password {
+    font-size: 15px;
+    padding-right: 10px;
+}
+
+.remember-box {
+    border: none;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.remember-text {
+    font-size: 15px;
+}
+
+.remember {
+    margin-right: 15px;
+}
+
+.btn {
+    padding: 15px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all ease 0.3s;
+}
+
+.btn-login {
+    background-color: #4054D2;
+    color: #ffffff;
+    border-radius: 9px;
+}
+
+.btn-login:hover {
+    background-color: #0B1CD5;
+}
+
+.btn-gogle-auth {
+    background-color: #FBFBFC;
+    color: black;
+    border-radius: 9px;
+    border: 1px solid #B0B6D0;
+}
+
+.google {
+    margin-right: 10px;
+    color: red;
+    font-size: 15px;
+}
+p {
+    font-size: 15px;
+}
+
+.or {
+    color: white;
+    align-self: center;
+    text-align: center;
+}
+
+.or::before {
+    content: "────────────────────────";
+    margin-right: 10px;
+}
+
+.or::after {
+    content: "────────────────────────";
+    margin-left: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #3856d1;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+label {
+    font-size: 15px;
+}
+
+a:hover {
+    color: #07139C;
+}
+
+
+
+@media screen and (max-width: 810px){
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    .container {
+        padding: 0;
+        margin: 0;
+        position: relative;
+        border-radius: 0;
+        width: 80%;
+        background: linear-gradient(to right, #FFECD2, #FCB69F);
+        width: 100%;
+        align-items: flex-start;
+        position: absolute;
+        height: 100%;
+    }
+    
+    .img {
+        display: none;
+        
+    }
+
+    .row {
+        position: absolute;
+        flex-direction: column;
+        width: 100%;
+        border: 0;
+    }
+    .form {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+    .pass-reset {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+        border: none;
+    }
+    .remember-box {
+        flex-direction: row;
+    }
+    .email, .password {
+        width: 100%;
+        border: 1px solid #5E5763;
+
+        margin-bottom: 10px;
+    }
+    .or {
+        width: 100%;
+    }
+}
+</style>
+<body>
+    <div class="container">
+        <div class="row">
+            <img src="img/login.jpg" alt="img" class="img">
+        </div>
+        <div class="row">
+            <img src="img/logo.png" alt="img" class="img1" width="150px" height="100px">
+            <form action="login.php" method="post" class="form active" id="loginForm">
+                <h2>Login</h2>
+                <label for="email">Email Address</label>
+                <div class="pass-reset" onclick="activeInput(this)">
+                    <input type="text" name="username" class="email" id="username" placeholder="username">
+                </div>
+                <label for="password">Password</label>
+                <div class="pass-reset" onclick="activeInput(this)">
+                    <input type="password" class="password" name="password" id="password" placeholder="**********">
+                   
+                </div>
+                <div class="pass-reset remember-box">
+                    <input type="checkbox" name="remember" class="remember" id="remember"><span class="remember-text">Rememeber Password</span>
+                </div>
+                <button class="btn btn-login">Login</button>
+                <p>Don't have an account? <a onclick="changeToRegister()" id="changeToRegister">Sign up</a></p>
+                <p class="or"></p>
+                
+            </form>
+
+            <form action="register.php" method="post" class="form" id="registerForm">
+                <h2>Register</h2>
+                <label for="email">Email Address</label>
+                <div class="pass-reset" onclick="activeInput(this)">
+                    <input type="text" name="username" class="email" id="username" placeholder="username">
+                </div>
+                <label for="password">Password</label>
+                <div class="pass-reset" onclick="activeInput(this)">
+                    <input type="password" class="password" name="password" id="password" placeholder="**********">
+                </div>
+                
+                <button class="btn btn-login">Register</button>
+                <p>Do you have an account? <a onclick="changeToLogin()" id="chnageToLogin">Sign in</a></p>
+                <p class="or"></p>
+            </form>
+
+
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FakeStore Product Listing</title>
+<style>
+    /* Some basic styling */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .product-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px;
+    }
+    .product-card {
+        width: 300px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+    .product-card:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+</style>
+</head>
+<body>
+
+<div class="product-container" id="product-container"></div>
+
+<script>
+// Fetch products from FakeStore API
+fetch('https://fakestoreapi.com/products')
+  .then(response => response.json())
+  .then(products => {
+    const productContainer = document.getElementById('product-container');
+    products.forEach(product => {
+      const productCard = document.createElement('div');
+      productCard.classList.add('product-card');
+      productCard.innerHTML = `
+        <h2>${product.title}</h2>
+        <img src="${product.image}" alt="${product.title}" style="width:100%">
+        <p>$${product.price}</p>
+      `;
+      // Add click event listener to redirect to product details page
+      productCard.addEventListener('click', () => {
+        window.location.href = `product-details.html?id=${product.id}`;
+      });
+      productContainer.appendChild(productCard);
+    });
+  })
+  .catch(error => console.error('Error fetching products:', error));
+</script>
+
+</body>
+</html>

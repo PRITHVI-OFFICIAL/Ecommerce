@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<style>
+    .card {
+        width: 20rem;
+        margin: 10px;
+        margin-left: 40px;
+        float: left;
+        overflow: hidden;
+        white-space: nowrap;
+            text-overflow: clip;
+    }
+    .card-image-top {
+        width: 17rem;
+        height: 18rem;
+    }
+
+    .rating{
+        width:15px;
+        height:15px;
+    }
+</style>
+<script>
+  const username=localStorage.getItem('username'); 
+  console.log(username);
+</script>
+<body>
+
+  <header class="p-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+         <img src="img/logo.png" width="50" height="40" style="margin-right: 50px;"/>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="index.html" class="nav-link px-2 link-dark">Home</a></li>
+          <li><a href="products.html" class="nav-link  ">Products</a></li>
+          <li><a href="carts.html" class="nav-link px-2 link-dark">Carts</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">Booking History</a></li>
+
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-10 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" >
+            
+            <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+          </ul>
+        </div>
+      
+      
+      </div>
+    </div>
+  </header>
+
+    <div class="bg-white p-4">
+
+        <p class="font-weight-bold" style="font-weight: bold; font-size: 20px; padding-left: 10px;" >Products</p>
+        
+    </div>
+
+    <div id="cardContainer" ></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cardContainer = document.getElementById("cardContainer");
+
+            let responseData;
+
+            fetch('http://52.66.67.51/products')
+                .then(response => response.json())
+                .then(data => {
+                    responseData = data;
+                    createCards();
+                })
+                .catch(error => console.error('Error fetching products:', error));
+
+            function createCards() {
+                responseData.forEach(product => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+
+                    // Wrap card with anchor tag and set href to product details page
+                    const cardLink = document.createElement('a');
+                    cardLink.href = `product-details.html?id=${product.id}`;
+                    cardLink.style.textDecoration="none";
+                    cardLink.style.color="black";
+                    card.appendChild(cardLink);
+
+                    const cardBody = document.createElement('div');
+                    cardBody.classList.add('card-body');
+
+                    const cardTitle = document.createElement('h4');
+                    cardTitle.classList.add('card-title');
+                    cardTitle.textContent = product.title;
+                    cardTitle.style.fontSize="16px";
+
+                    const cardPrice = document.createElement('p');
+                    cardPrice.classList.add('card-text');
+
+                    cardPrice.textContent = 'Price: ₹' + product.price.toFixed(2);
+
+                    const cardRating = document.createElement('p');
+                    cardRating.classList.add('card-text');
+                    cardRating.textContent = 'Rating: ' + product.rating.rate + ' (' + product.rating.count + ' reviews)';
+
+                    const cardImage = document.createElement('img');
+                    cardImage.classList.add('card-image-top');
+                    cardImage.src = product.image;
+
+                    const starContainer = document.createElement('div');
+                    starContainer.classList.add('star-container');
+
+                    // Adding stars based on the rounded rating value
+                    const roundedRating = Math.round(product.rating.rate);
+                    for (let i = 0; i < roundedRating; i++) {
+                        const star = document.createElement('img');
+                        star.classList.add('rating');
+                        star.style.marginLeft=20;
+                        star.src = './assets/star.png';
+                        starContainer.appendChild(star);
+                    }
+
+                    cardBody.appendChild(cardTitle);
+                    cardBody.appendChild(cardPrice);
+                    cardBody.appendChild(cardRating);
+                    cardBody.appendChild(starContainer);
+
+                    cardLink.appendChild(cardImage);
+                    cardLink.appendChild(cardBody);
+
+                    cardContainer.appendChild(card);
+                });
+            }
+        });
+    </script>    
+</body>
+</html>

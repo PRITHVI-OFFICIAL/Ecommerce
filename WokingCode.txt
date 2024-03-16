@@ -1,0 +1,75 @@
+
+Get Products
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Fetch products from the database
+    $sql = "SELECT id, title, price, description, category, image, rating__rate, rating__count FROM products";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Output data of each row as JSON
+        $products = array();
+        while ($row = $result->fetch_assoc()) {
+            $product = array(
+                "id" => $row["id"],
+                "title" => $row["title"],
+                "price" => (float) $row["price"],
+                "description" => $row["description"],
+                "category" => $row["category"],
+                "image" => $row["image"],
+                "rating" => array(
+                    "rate" => (float) $row["rating__rate"],
+                    "count" => (int) $row["rating__count"]
+                )
+            );
+            $products[] = $product;
+        }
+        echo json_encode($products);
+        return json_encode($products);
+        exit(); // Exit to prevent further execution
+    } else {
+        echo "No products found";
+        exit(); // Exit to prevent further execution
+    }
+
+}
+
+
+
+
+
+
+
+Get Products by id
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $productId = 2;
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        // Fetch details of a specific product by ID
+        $sql = "SELECT id, title, price, description, category, image, rating__rate, rating__count FROM products WHERE id = $productId";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $product = array(
+                "id" => $row["id"],
+                "title" => $row["title"],
+                "price" => (float) $row["price"],
+                "description" => $row["description"],
+                "category" => $row["category"],
+                "image" => $row["image"],
+                "rating" => array(
+                    "rate" => (float) $row["rating__rate"],
+                    "count" => (int) $row["rating__count"]
+                )
+            );
+            echo json_encode($product);
+            exit(); // Exit to prevent further execution
+        } else {
+            http_response_code(404);
+            echo "Product not found";
+            exit(); // Exit to prevent further execution
+        }
+    }
+
+}

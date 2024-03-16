@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "assets",
+			"path": "E:/SifyAssignment/assets"
+		},
+		{
+			"name": "htdocs",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "htdocs"
+	}
+}

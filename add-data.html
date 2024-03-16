@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Product</h2>
+        <form action="products.php" method="post">
+            
+            <label for="id">Id:</label><br>
+            <input type="text" id="id" name="id" required><br>
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" required><br>
+            <label for="price">Price:</label><br>
+            <input type="number" id="price" name="price" min="0" step="0.01" required><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4" required></textarea><br>
+            <label for="category">Category:</label><br>
+            <input type="text" id="category" name="category" required><br>
+            <label for="image">Image URL:</label><br>
+            <input type="text" id="image" name="image" required><br>
+            <label for="rating_rate">Rating Rate:</label><br>
+            <input type="text" id="rating_rate" name="rating_rate" required><br>
+            <label for="rating_count">Rating Count:</label><br>
+            <input type="text" id="rating_count" name="rating_count" required><br><br>
+            <input type="submit" name="submit" value="Add Product">
+        </form>
+    </div>
+</body>
+</html>

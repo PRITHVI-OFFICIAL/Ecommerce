@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <title>Home Page</title>
+</head>
+
+<style>
+    .card {
+        width: 20rem;
+        margin: 10px;
+        margin-left: 40px;
+        float: left;
+        overflow: hidden;
+        white-space: nowrap;
+            text-overflow: clip;
+    }
+    .card-image-top {
+        width: 17rem;
+        height: 18rem;
+    }
+
+    .rating{
+        width:15px;
+        height:15px;
+    }
+</style>
+
+
+<script>
+  // Retrieve username from query parameter
+  var urlParams = new URLSearchParams(window.location.search);
+  var username = urlParams.get('username');
+  console.log(username);
+  localStorage.setItem('username', username);
+ 
+  
+  
+</script>
+
+
+
+
+<body>
+  <p id="username"></p>
+    <header class="p-3 border-bottom">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+             <img src="img/logo.png" width="50" height="40" style="margin-right: 50px;"/>
+            </a>
+    
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="index.html" class="nav-link px-2 ">Home</a></li>
+              <li><a href="products.html" class="nav-link link-dark ">Products</a></li>
+              <li><a href="carts.html" class="nav-link px-2 link-dark">Carts</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark">Booking History</a></li>
+
+            </ul>
+    
+            <form class="col-12 col-lg-auto mb-10 mb-lg-0 me-lg-3" role="search">
+              <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+            </form>
+    
+            <div class="dropdown text-end">
+              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small" >
+                
+                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+              </ul>
+            </div>
+          
+          
+          </div>
+        </div>
+      </header>
+
+     <div class="p-5">
+        <div class="d-flex justify-content-between">
+            <div class=".col-4">
+             <img src="assets/leftside.png" width="250" height="245" class="mx-auto d-block m-2" />
+             <img src="assets/rightside.png" width="250" height="245" class="mx-auto d-block m-2" />
+            </div>
+     
+            <div class=".col-8">
+                
+             <!-- <div class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="assets/home.png" width="900" height="500" class="mx-auto d-block m-2" />
+                    </div>
+
+                    <div class="carousel-item active">
+                        <img src="assets/home.png" width="900" height="500" class="mx-auto d-block m-2" />
+                    </div>
+
+                    <div class="carousel-item active">
+                        <img src="assets/home.png" width="900" height="500" class="mx-auto d-block m-2" />
+                    </div>
+                </div>
+               
+             </div> -->
+
+             <div id="carouselExampleAutoplaying" class="carousel slide .col-8" data-bs-ride="carousel" data-bs-interval="2000">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/home.png" width="900" height="500" class="mx-auto d-block m-2" />
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/home.png" width="900" height="500" class="mx-auto d-block m-2" />
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/home.png" width="900" height="500" class="mx-auto d-block m-2" />
+                  </div>
+                </div>
+                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button> -->
+              </div>
+
+            </div>
+     
+            <div class=".col-4">
+             <img src="assets/leftside.png" width="250" height="245" class="mx-auto d-block m-2" />
+             <img src="assets/rightside.png" width="250" height="245" class="mx-auto d-block m-2" />
+            </div>
+     
+           </div>
+     </div>
+   
+
+     <div class="d-flex justify-content-between p-2">
+        <img src="https://rukminim2.flixcart.com/fk-p-flap/1020/540/image/1f2e2549a466b88e.jpg" width="500" height="250" /> 
+        <img src="https://rukminim2.flixcart.com/fk-p-flap/1020/540/image/8c847eea35140ed6.jpg" width="500" height="250"/>
+        <img src="https://rukminim2.flixcart.com/fk-p-flap/1020/540/image/3614e4f686524e06.jpg" width="500" height="250"/>
+     </div>
+
+     <!-- <p class="h4 p-4 text-bold">Recommended Items</p> -->
+
+     <!-- <div class="p-6 d-flex flex-wrap">
+
+        <div class="card" style="width: 18rem; margin: 10px;">
+            <img src="assets/leftside.png" class="card-image-top"  class="mx-auto d-block m-2" />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 16rem; margin: 10px;">
+            <img src="assets/leftside.png" class="card-image-top" class="mx-auto d-block m-2" />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 10px;">
+            <img src="assets/leftside.png" class="card-image-top"  class="mx-auto d-block m-2" />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div> 
+
+        <div class="card" style="width: 18rem; margin: 10px;">
+            <img src="assets/leftside.png" class="card-image-top"  class="mx-auto d-block m-2" />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 10px;">
+            <img src="assets/leftside.png" class="card-image-top"  class="mx-auto d-block m-2" />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+
+    </div> -->
+    <!-- <div id="cardContainer"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cardContainer = document.getElementById("cardContainer");
+
+            let responseData;
+
+            fetch('https://fakestoreapi.com/products')
+                .then(response => response.json())
+                .then(data => {
+                    responseData = data;
+                    createCards();
+                })
+                .catch(error => console.error('Error fetching products:', error));
+
+            function createCards() {
+                responseData.forEach(product => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+
+                    const cardBody = document.createElement('div');
+                    cardBody.classList.add('card-body');
+
+                    const cardTitle = document.createElement('h4');
+                    cardTitle.classList.add('card-title');
+                    cardTitle.textContent = product.title;
+                    cardTitle.style.fontSize="16px";
+
+                    // const cardText = document.createElement('p');
+                    // cardText.classList.add('card-text');
+                    // cardText.textContent = truncateText(product.description, 100); // Adjust the length as needed
+
+                    const cardPrice = document.createElement('p');
+                    cardPrice.classList.add('card-text');
+                    
+                    cardPrice.textContent = 'Price: ₹' + product.price.toFixed(2);
+
+                    const cardRating = document.createElement('p');
+                    cardRating.classList.add('card-text');
+                    cardRating.textContent = 'Rating: ' + product.rating.rate + ' (' + product.rating.count + ' reviews)';
+
+                    const cardImage = document.createElement('img');
+                    cardImage.classList.add('card-image-top');
+                    cardImage.src = product.image;
+
+                    const starContainer = document.createElement('div');
+                    starContainer.classList.add('star-container');
+
+                    // Adding stars based on the rounded rating value
+                    const roundedRating = Math.round(product.rating.rate);
+                    for (let i = 0; i < roundedRating; i++) {
+                        const star = document.createElement('img');
+                        star.classList.add('rating');
+                        star.style.marginLeft=20;
+                        star.src = './assets/star.png';
+                        starContainer.appendChild(star);
+                    }
+
+                    cardBody.appendChild(cardTitle);
+                    // cardBody.appendChild(cardText);
+                    cardBody.appendChild(cardPrice);
+                    cardBody.appendChild(cardRating);
+                    cardBody.appendChild(starContainer);
+
+                    card.appendChild(cardImage);
+                    card.appendChild(cardBody);
+
+                    cardContainer.appendChild(card);
+                });
+            }
+
+            function truncateText(text, maxLength) {
+                if (text.length > maxLength) {
+                    return text.substring(0, maxLength - 3) + '...';
+                }
+                return text;
+            }
+        });
+    </script> -->
+
+</body>
+</html>
