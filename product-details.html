@@ -123,7 +123,7 @@
             console.log(productId,"----------->");
             document.getElementById('productId').value=productId;
 
-            fetch(`http://localhost/products/${productId}`)
+            fetch(`http://52.66.67.51/products/${productId}`)
                 .then(response => response.json())
                 .then(product => {
                     document.getElementById('product-title').innerText = product.title;
